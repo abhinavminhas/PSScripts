@@ -1,4 +1,5 @@
 ﻿<#
+
 .Synopsis
 This function will set the internet settings provided as input to the cmdlet.
 

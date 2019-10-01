@@ -1,4 +1,5 @@
 ﻿<#
+
 .Synopsis
 This function will get the HTML logger files from the 'Test Results' folder.
 
@@ -24,6 +25,7 @@ This command is used to get all the unique HTML logger files from the 'Test Resu
 .Example
 Get-CodedUIHTMLLogger -TestResultsPath "C:\Test\TestResults" -Zipped -ZippedFileName "Logger Reports"
 This command is used to get all the unique HTML logger files from the 'Test Results' folder, zip the contests of HTML logger files folder and set the name of the zipped folder.
+
 #>
 
 Function Get-CodedUIHTMLLogger
