@@ -104,31 +104,34 @@ Function Send-Email
         $bccRecipients = $Bcc.Split(',')
         $include = $AttachmentIncludeFilter
         $exclude = $AttachmentExcludeFilter
-        if(![string]::IsNullOrEmpty($AttachmentIncludeFilter) -and [string]::IsNullOrEmpty($AttachmentExcludeFilter))
+        if(![string]::IsNullOrEmpty($AttachmentFolderPath))
         {
-            $attachmentFiles = Get-ChildItem -Path $path -Filter $include -Recurse -ErrorAction SilentlyContinue -Force
-        }
-        elseif ([string]::IsNullOrEmpty($AttachmentIncludeFilter) -and ![string]::IsNullOrEmpty($AttachmentExcludeFilter))
-        {
-            $attachmentFiles = Get-ChildItem -Path $path -Exclude $exclude -Recurse -ErrorAction SilentlyContinue -Force
-        }
-        elseif((![string]::IsNullOrEmpty($AttachmentIncludeFilter)) -or (![string]::IsNullOrEmpty($AttachmentExcludeFilter)))
-        {
-            $attachmentFiles = Get-ChildItem -Path $path -Filter $include -Exclude $exclude -Recurse -ErrorAction SilentlyContinue -Force
-        }
-        else
-        {
-            $attachmentFiles = Get-ChildItem -Path $path -Recurse -ErrorAction SilentlyContinue -Force
-        }
-        $path = $AttachmentFolderPath
-        $attachments = New-Object System.Collections.ArrayList
-        foreach ($attachmentFile in $attachmentFiles)
-        {
-            $filename = $attachmentFile | select -Property Name
-            $filepath = Join-Path $path $filename.Name
-            if((Test-Path -Path $filepath -PathType leaf))
+            if(![string]::IsNullOrEmpty($AttachmentIncludeFilter) -and [string]::IsNullOrEmpty($AttachmentExcludeFilter))
             {
-                $attachments.add($filepath)
+                $attachmentFiles = Get-ChildItem -Path $path -Filter $include -Recurse -ErrorAction SilentlyContinue -Force
+            }
+            elseif ([string]::IsNullOrEmpty($AttachmentIncludeFilter) -and ![string]::IsNullOrEmpty($AttachmentExcludeFilter))
+            {
+                $attachmentFiles = Get-ChildItem -Path $path -Exclude $exclude -Recurse -ErrorAction SilentlyContinue -Force
+            }
+            elseif((![string]::IsNullOrEmpty($AttachmentIncludeFilter)) -or (![string]::IsNullOrEmpty($AttachmentExcludeFilter)))
+            {
+                $attachmentFiles = Get-ChildItem -Path $path -Filter $include -Exclude $exclude -Recurse -ErrorAction SilentlyContinue -Force
+            }
+            else
+            {
+                $attachmentFiles = Get-ChildItem -Path $path -Recurse -ErrorAction SilentlyContinue -Force
+            }
+            $path = $AttachmentFolderPath
+            $attachments = New-Object System.Collections.ArrayList
+            foreach ($attachmentFile in $attachmentFiles)
+            {
+                $filename = $attachmentFile | select -Property Name
+                $filepath = Join-Path $path $filename.Name
+                if((Test-Path -Path $filepath -PathType leaf))
+                {
+                    $attachments.add($filepath)
+                }
             }
         }
     }
@@ -141,20 +144,20 @@ Function Send-Email
             $message.from = $From
             foreach ($recipient in $toRecipients)
             {
-                $message.to.add($To)
+                $message.to.add($recipient)
             }
-            if(![string]::IsNullOrEmpty($Cc))
+            if(![string]::IsNullOrEmpty($ccRecipients))
             {
                 foreach ($recipient in $ccRecipients)
                 {
-                    $message.cc.add($Cc)
+                    $message.cc.add($recipient)
                 }
             }
-            if(![string]::IsNullOrEmpty($Bcc))
+            if(![string]::IsNullOrEmpty($bccRecipients))
             {
                 foreach ($recipient in $bccRecipients)
                 {
-                    $message.bcc.add($Bcc)
+                    $message.bcc.add($recipient)
                 }
             }
             if(![string]::IsNullOrEmpty($Subject))
