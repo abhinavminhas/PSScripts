@@ -43,17 +43,20 @@ This parameter is mandatory.
 .Parameter TestCaseName
 This parameter is set as the 'Test Case' to run.
 This parameter is mandatory.
+.Parameter TestResultsDirectory
+This parameter is set as the path to 'TestResults' directory.
+This parameter is mandatory.
 .Parameter TestReportNamePrefix
 This parameter is set as the 'Test Report Name'.
-By defalut the test file name format is 'TestResultFile_dd_MM_yy_hh_mm_ss_fffff.trx'. If this value is provided the format will be set as '<TestReportNamePrefix>_dd_MM_yy_hh_mm_ss_fffff.trx'
+By default the test file name format is 'TestResultFile_dd_MM_yy_hh_mm_ss_fffff.trx'. If this value is provided the format will be set as '<TestReportNamePrefix>_dd_MM_yy_hh_mm_ss_fffff.trx'
 Note: Refrain from giving too long prefix names.
 
 .Example
-RunTest-Parallel -VSTestAdapterPath "<Path To 'vstest.console.exe' File>" -TestFileLocation "<Path To '.dll' file/files>" -Threads <Number Of Threads To Run In Parallel> -TestCaseName "<Test Case Name To Execute>"
+RunTest-Parallel -VSTestAdapterPath "<Path To 'vstest.console.exe' File>" -TestFileLocation "<Path To '.dll' file/files>" -Threads <Number Of Threads To Run In Parallel> -TestCaseName "<Test Case Name To Execute>" -TestResultsDirectory "<Path To 'Test Result' Directory>"
 This command runs test in parallel using mandatory parameters.
 
 .Example
-RunTest-Parallel -VSTestAdapterPath "<Path To 'vstest.console.exe' File>" -TestFileLocation "<Path To '.dll' file/files>" -Threads <Number Of Threads To Run In Parallel> -TestCaseName "<Test Case Name To Execute>" -TestReportNamePrefix "<Prefixed Name Of Test Report (.trx) File>"
+RunTest-Parallel -VSTestAdapterPath "<Path To 'vstest.console.exe' File>" -TestFileLocation "<Path To '.dll' file/files>" -Threads <Number Of Threads To Run In Parallel> -TestCaseName "<Test Case Name To Execute>" -TestResultsDirectory "<Path To 'Test Result' Directory>" -TestReportNamePrefix "<Prefixed Name Of Test Report (.trx) File>"
 This command runs test in parallel using all parameters.
 
 #>
@@ -70,6 +73,8 @@ Workflow RunTest-Parallel
         [int]$Threads,
         [Parameter(Mandatory=$true)]
         [string]$TestCaseName,
+        [Parameter(Mandatory=$true)]
+        [string]$TestResultsDirectory,
         [Parameter(Mandatory=$false)]
         [string]$TestReportNamePrefix
         )
@@ -128,11 +133,13 @@ Workflow RunTest-Parallel
             [string]$TestFileLocation,
             [Parameter(Mandatory=$true)]
             [string]$Test,
+            [Parameter(Mandatory=$true)]
+            [string]$TestResultsDirectory,
             [Parameter(Mandatory=$false)]
             [string]$TestReportName
             )
 
-        $arguments = "$TestLocation /Tests:$Test '/Logger:trx;LogFileName=$TestReportName.trx'"
+        $arguments = "$TestFileLocation /Tests:$Test /ResultsDirectory:$TestResultsDirectory '/Logger:trx;LogFileName=$TestReportName.trx'"
         Invoke-Expression "$VSTestAdapterPath $arguments"
     }
 
@@ -153,6 +160,7 @@ Workflow RunTest-Parallel
     {
         $vSTestAdapterPath = $VSTestAdapterPath
         $testFileLocation = $TestFileLocation
+        $testResultsDirectory = $TestResultsDirectory
         $requiredTests = InitialiseTest -Threads $Threads -TestCaseName $TestCaseName
         if($TestReportNamePrefix -eq $null -or $TestReportNamePrefix -eq "")
         {
@@ -165,13 +173,24 @@ Workflow RunTest-Parallel
                 $TestReportNamePrefix = $TestReportNamePrefix + "_"
             }
         }
+        if(!$testResultsDirectory.EndsWith("\TestResults"))
+        {
+            if(!$testResultsDirectory.EndsWith("\"))
+            {
+                $testResultsDirectory = $testResultsDirectory + "\TestResults"
+            }
+            else
+            {
+                $testResultsDirectory = $testResultsDirectory + "TestResults"
+            }
+        }
         ForEach -Parallel -ThrottleLimit $Threads ($test in $requiredTests)
         {
             $reqiredTestReportName = GetTestReportName -TestReportName  $TestReportNamePrefix
-            RunTest -VSTestAdapterPath $vSTestAdapterPath -TestFileLocation $testFileLocation -Test $test -TestReportName $reqiredTestReportName
+            RunTest -VSTestAdapterPath $vSTestAdapterPath -TestFileLocation $testFileLocation -Test $test -TestResultsDirectory $testResultsDirectory -TestReportName $reqiredTestReportName
         }
     }
 }
 
-#RunTest-Parallel -VSTestAdapterPath "<Path To 'vstest.console.exe' File>" -TestFileLocation "<Path To '.dll' file/files>" -Threads <Number Of Threads To Run In Parallel> -TestCaseName "<Test Case Name To Execute>"
-#RunTest-Parallel -VSTestAdapterPath "<Path To 'vstest.console.exe' File>" -TestFileLocation "<Path To '.dll' file/files>" -Threads <Number Of Threads To Run In Parallel> -TestCaseName "<Test Case Name To Execute>" -TestReportNamePrefix "<Prefixed Name Of Test Report (.trx) File>"
+#RunTest-Parallel -VSTestAdapterPath "<Path To 'vstest.console.exe' File>" -TestFileLocation "<Path To '.dll' file/files>" -Threads <Number Of Threads To Run In Parallel> -TestCaseName "<Test Case Name To Execute>" -TestResultsDirectory "<Path To 'Test Result' Directory>"
+#RunTest-Parallel -VSTestAdapterPath "<Path To 'vstest.console.exe' File>" -TestFileLocation "<Path To '.dll' file/files>" -Threads <Number Of Threads To Run In Parallel> -TestCaseName "<Test Case Name To Execute>" -TestResultsDirectory "<Path To 'Test Result' Directory>" -TestReportNamePrefix "<Prefixed Name Of Test Report (.trx) File>"
