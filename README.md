@@ -1,7 +1,7 @@
 # **posh**
-*Repository with certain useful PowerShell Cmdlets, Scripts & Workflows.* </br></br>  
+*Repository with certain useful PowerShell Cmdlets, Scripts & Workflows.*  
 
-# **Cmdlet**
+# **Cmdlets**
 A [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/cmdlet-overview) is a lightweight command that is used in the PowerShell environment. The PowerShell runtime invokes these cmdlets within the context of automation scripts that are provided at the command line.  
 
 1. [Configure-InternetSettings](.\Cmdlets\Configure-InternetSettings-Cmdlet.ps1)  
