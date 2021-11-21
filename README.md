@@ -5,16 +5,16 @@
 A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/cmdlet-overview) is a lightweight command that is used in the PowerShell environment. The PowerShell runtime invokes these cmdlets within the context of automation scripts that are provided at the command line.  
 
 1. [Configure-InternetSettings](./Cmdlets/Configure-InternetSettings-Cmdlet.ps1)  
-   **Description:**  
-   The function can manipulate internet settings provided as input to the cmdlet. Requires Internet Explorer.  
-   **Usage Example:**
-   ```
-   Configure-InternetSettings -EnableAutomaticDetectSettings "E" -EnableAutomaticConfigScript "E" -EnableProxy "E" -SetProxyServer "http://proxy.internal.poxy.com.au:8080" -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.google.com;www.yahoo.com"
-   ```
-   **NOTE** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
-   ```
-   Get-Help Configure-InternetSettings -Full
-   ```
+   <ins>**Description:**</ins>  
+      The function can manipulate internet settings provided as input to the cmdlet. Requires Internet Explorer.  
+   <ins>**Usage Example:**</ins> 
+      ```
+      Configure-InternetSettings -EnableAutomaticDetectSettings "E" -EnableAutomaticConfigScript "E" -EnableProxy "E" -SetProxyServer "http://proxy.internal.poxy.com.au:8080" -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.google.com;www.yahoo.com"
+      ```
+      **NOTE** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
+      ```
+      Get-Help Configure-InternetSettings -Full
+      ```
 
 # **Scripts**
 A PowerShell [script](https://docs.microsoft.com/en-us/powershell/scripting/windows-powershell/ise/how-to-write-and-run-scripts-in-the-windows-powershell-ise) is a plain text file that contains one or more PowerShell commands. PowerShell scripts have a .ps1 file extension. Running a script usually is a lot like running a cmdlet.  
