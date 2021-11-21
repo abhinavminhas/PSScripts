@@ -8,7 +8,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
 
 -  [Configure-InternetSettings](./Cmdlets/Configure-InternetSettings-Cmdlet.ps1)  
    <ins>**Description:**</ins>  
-   The function can manipulate internet settings provided as input to the cmdlet. Requires Internet Explorer.  
+   The function can manipulate internet settings provided as input to the cmdlet. Requires Internet Explorer to enforce changes.  
    <ins>**Usage Example:**</ins> 
    ```
    Configure-InternetSettings -EnableAutomaticDetectSettings "E" -EnableAutomaticConfigScript "E" -EnableProxy "E" -SetProxyServer "http://proxy.internal.poxy.com.au:8080" -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.google.com;www.yahoo.com"
