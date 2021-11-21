@@ -132,5 +132,5 @@ Function Get-MatchedStringFromFiles
     }
 }
 
-#Get-MatchedStringFromFiles -FileFolderPath "C:\Users\Abhinav Minhas\Downloads\Execution_Result" -Regex ":::::::: Application ID: \[[0-9]{0,9}\]\; Student ID: \[[0-9]{0,9}\] ::::::::"
-#Get-MatchedStringFromFiles -FileFolderPath "C:\Users\Abhinav Minhas\Downloads\Execution_Result" -FileIncludeFilter "*.trx" -FileExcludeFilter "*.txt" -Regex ":::::::: Application ID: \[[0-9]{0,9}\]\; Student ID: \[[0-9]{0,9}\] ::::::::"
+#Get-MatchedStringFromFiles -FileFolderPath "C:\Users\abhinavminhas\Downloads\Execution_Result" -Regex ":::::::: Application ID: \[[0-9]{0,9}\]\; Student ID: \[[0-9]{0,9}\] ::::::::"
+#Get-MatchedStringFromFiles -FileFolderPath "C:\Users\abhinavminhas\Downloads\Execution_Result" -FileIncludeFilter "*.trx" -FileExcludeFilter "*.txt" -Regex ":::::::: Application ID: \[[0-9]{0,9}\]\; Student ID: \[[0-9]{0,9}\] ::::::::"
