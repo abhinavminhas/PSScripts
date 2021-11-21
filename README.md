@@ -10,7 +10,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    ```
    Configure-InternetSettings -EnableAutomaticDetectSettings "E" -EnableAutomaticConfigScript "E" -EnableProxy "E" -SetProxyServer "http://proxy.internal.poxy.com.au:8080" -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.google.com;www.yahoo.com"
    ```
-   **NOTE** *Run cmdlet function file in powesrhell ISE and use below command for more help documentation and examples.*  
+   **NOTE** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
    ```
    Get-Help Configure-InternetSettings -Full
    ```
