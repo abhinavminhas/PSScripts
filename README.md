@@ -10,7 +10,10 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    ```
    Configure-InternetSettings -EnableAutomaticDetectSettings "E" -EnableAutomaticConfigScript "E" -EnableProxy "E" -SetProxyServer "http://proxy.internal.poxy.com.au:8080" -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.google.com;www.yahoo.com"
    ```
-   **NOTE** *Run cmdlet function file in powesrhell ISE and use ```Get-Help Configure-InternetSettings -Full``` for more help documentation and examples.*
+   **NOTE** *Run cmdlet function file in powesrhell ISE and use below command for more help documentation and examples.*  
+   ```
+   Get-Help Configure-InternetSettings -Full
+   ```
 
 # **Scripts**
 A PowerShell [script](https://docs.microsoft.com/en-us/powershell/scripting/windows-powershell/ise/how-to-write-and-run-scripts-in-the-windows-powershell-ise) is a plain text file that contains one or more PowerShell commands. PowerShell scripts have a .ps1 file extension. Running a script usually is a lot like running a cmdlet.  
