@@ -18,6 +18,18 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    Get-Help Configure-InternetSettings -Full
    ```
 
+-  [Get-CodedUIHTMLLogger](./Cmdlets/Get-CodedUIHTMLLogger-Cmdlet.ps1)  
+   <ins>**Description:**</ins>  
+   This function can get the generated Coded UI HTML logger report files from the 'Test Results' folder.  
+   <ins>**Usage Example:**</ins> 
+   ```
+   Get-CodedUIHTMLLogger -TestResultsPath "C:\Test\TestResults" -Zipped -ZippedFileName "Logger Reports"
+   ```
+   **NOTE** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
+   ```
+   Get-Help Get-CodedUIHTMLLogger -Full
+   ```
+
 # **Scripts**
 A PowerShell [script](https://docs.microsoft.com/en-us/powershell/scripting/windows-powershell/ise/how-to-write-and-run-scripts-in-the-windows-powershell-ise) is a plain text file that contains one or more PowerShell commands. PowerShell scripts have a .ps1 file extension. Running a script usually is a lot like running a cmdlet.  
 
