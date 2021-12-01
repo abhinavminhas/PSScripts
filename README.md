@@ -32,7 +32,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
 
 -  [Get-MatchedStringFromFiles](./Cmdlets/Get-MatchedStringFromFiles-Cmdlet.ps1)  
    <ins>**Description:**</ins>  
-   This function can get the matching string values from the supplied files.  
+   This function gets the matching string values from the supplied files.  
    <ins>**Usage Example:**</ins> 
    ```
    Get-MatchedStringFromFiles -FileFolderPath <File Folder Path> -Regex "<Regular Expression>" -FileIncludeFilter "<File Include Filter>" -FileExcludeFilter "<File Exclude Filter>"
