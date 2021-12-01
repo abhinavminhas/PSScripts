@@ -20,7 +20,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
 
 -  [Get-CodedUIHTMLLogger](./Cmdlets/Get-CodedUIHTMLLogger-Cmdlet.ps1)  
    <ins>**Description:**</ins>  
-   This function can get the generated Coded UI HTML logger report files from the 'Test Results' folder.  
+   This function gets the generated Coded UI HTML logger report files from the 'Test Results' folder.  
    <ins>**Usage Example:**</ins> 
    ```
    Get-CodedUIHTMLLogger -TestResultsPath "C:\Test\TestResults" -Zipped -ZippedFileName "Logger Reports"
@@ -28,6 +28,18 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
    ```
    Get-Help Get-CodedUIHTMLLogger -Full
+   ```
+
+-  [Get-MatchedStringFromFiles](./Cmdlets/Get-MatchedStringFromFiles-Cmdlet.ps1)  
+   <ins>**Description:**</ins>  
+   This function gets the matching string values from the supplied files.  
+   <ins>**Usage Example:**</ins> 
+   ```
+   Get-MatchedStringFromFiles -FileFolderPath <File Folder Path> -Regex "<Regular Expression>" -FileIncludeFilter "<File Include Filter>" -FileExcludeFilter "<File Exclude Filter>"
+   ```
+   **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
+   ```
+   Get-Help Get-MatchedStringFromFiles -Full
    ```
 
 # **Scripts**
