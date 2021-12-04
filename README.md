@@ -23,7 +23,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    This function gets the generated Coded UI HTML logger report files from the 'Test Results' folder.  
    <ins>**Usage Example:**</ins> 
    ```
-   Get-CodedUIHTMLLogger -TestResultsPath "C:\Test\TestResults" -Zipped -ZippedFileName "Logger Reports"
+   Get-CodedUIHTMLLogger -TestResultsPath "C:\Test\TestResults" -Zipped -ZippedFileName "TestReports"
    ```
    **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
    ```
