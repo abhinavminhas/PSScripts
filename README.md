@@ -54,6 +54,18 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    Get-Help Restart-Servers -Full
    ```
 
+-  [Send-Email](./Cmdlets/Send-Email-Cmdlet.ps1)  
+   <ins>**Description:**</ins>  
+   The function sends email using SMTP Client.  
+   <ins>**Usage Example:**</ins> 
+   ```
+   Send-Email -SMTPServer "<SMTP Server Address>" -SMTPPort "<SMTP Server Port>" -From "<From Address>" -Password "<Password>" -To "<To Addresses>" -Cc "<Cc Addresses>" -Bcc "<Bcc Addresses>" -Subject "<Subject Line>" -Body "<Email Body>" -AttachmentFolderPath "<Attachment Folder Path>" -AttachmentIncludeFilter "<Include Filter>" -AttachmentExcludeFilter "<Exclude Filter>"
+   ```
+   **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
+   ```
+   Get-Help Send-Email -Full
+   ```
+
 # **Scripts**
 A PowerShell [script](https://docs.microsoft.com/en-us/powershell/scripting/windows-powershell/ise/how-to-write-and-run-scripts-in-the-windows-powershell-ise) is a plain text file that contains one or more PowerShell commands. PowerShell scripts have a .ps1 file extension. Running a script usually is a lot like running a cmdlet.  
 
