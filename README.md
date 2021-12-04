@@ -44,7 +44,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
 
 -  [Restart-Servers](./Cmdlets/Restart-Servers-Cmdlet.ps1)  
    <ins>**Description:**</ins>  
-   The function restarts the machines/servers provided as input to the cmdlet.
+   The function restarts the machines/servers provided as input to the cmdlet.  
    <ins>**Usage Example:**</ins> 
    ```
    Restart-Servers -Servers "PC1,PC2,PC3,PC4" -Username "domain\<username>" -Password "<password>" -WaitForServerToRestart "60" -PingRetries "4"
