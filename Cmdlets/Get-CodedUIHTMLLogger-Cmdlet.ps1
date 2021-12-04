@@ -62,13 +62,18 @@ Function Get-CodedUIHTMLLogger
     {
         try
         {
-            $path = $TestResultsPath            
+            $path = $TestResultsPath
             $newpath = Join-Path $path $loggerFileDirectoryName
+            $pathExists = Test-Path $newpath
+            if ($pathExists -eq $false)
+            {
+                throw [System.IO.FileNotFoundException]::new("Path '" + $newpath + "' Not Found.")
+            }
             $htmlLoggerFiles = Get-ChildItem -Path $path -Exclude *.trx.html -Filter *.html -Recurse -ErrorAction SilentlyContinue -Force
             New-Item -Path $path -ItemType Directory -Name $loggerFileDirectoryName -Force
             foreach ($htmlLoggerFile in $htmlLoggerFiles)
             {
-                $filename = $htmlLoggerFile | select -Property Name
+                $filename = $htmlLoggerFile | Select-Object -Property Name
                 if(!(Test-Path(Join-Path $newpath $filename.Name)))
                 {
                     Copy-Item -LiteralPath $htmlLoggerFile -Destination $newpath
@@ -76,19 +81,25 @@ Function Get-CodedUIHTMLLogger
             }
             if($zipped -eq $true)
             {
-                if((ls $path $loggerFileDirectoryName -Recurse -Directory -Name) -eq  $loggerFileDirectoryName)
+                if((Get-ChildItem $path $loggerFileDirectoryName -Recurse -Directory -Name) -eq  $loggerFileDirectoryName)
                 {
                     Compress-Archive -LiteralPath $newpath -DestinationPath $path\$ZippedFileName -Force
                 }
             }
+        }
+        catch [System.IO.FileNotFoundException]
+        {
+            Write-Log(":: SCRIPT ERROR ::")
+            Write-Log("Error Message :: $_")
+            Break
         }
         catch
         {
             Write-Log(":: SCRIPT ERROR ::")
             Write-Log("Error Message :: $_.Exception.Message")
             Break
-        }    
-    } 
+        }
+    }
    
     End
     {
