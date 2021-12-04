@@ -29,39 +29,39 @@ This parameter is set as the 'Bypass Local Addresses' for internet settings of t
 This parameter is not mandatory, and can be empty. Default value is '<local>'. 
 
 .Example
-Configure-InternetSettings -EnableAutomaticDetectSettings "E"
+Update-InternetSettings -EnableAutomaticDetectSettings "E"
 This command is used for enabling 'Automatically Detect Settings'.
 .Example
-Configure-InternetSettings -EnableAutomaticDetectSettings "D"
+Update-InternetSettings -EnableAutomaticDetectSettings "D"
 This command is used for disabling 'Automatically Detect Settings'.
 .Example
-Configure-InternetSettings -EnableAutomaticConfigScript "E" -SetAutomaticConfigurationURL "https://www.example.com"
+Update-InternetSettings -EnableAutomaticConfigScript "E" -SetAutomaticConfigurationURL "https://www.example.com"
 This command is used for enabling 'Use Automatic Configuration Script' and setting 'Automatic Configuration URL'.
 .Example
-Configure-InternetSettings -EnableAutomaticConfigScript "D"
+Update-InternetSettings -EnableAutomaticConfigScript "D"
 This command is used for disabling 'Use Automatic Configuration Script'.
 .Example
-Configure-InternetSettings -EnableProxy "E" -SetProxyServer "proxy:7890"
+Update-InternetSettings -EnableProxy "E" -SetProxyServer "proxy:7890"
 This command is used for enabling 'Proxy' and setting 'Proxy Information'.
 .Example
-Configure-InternetSettings -EnableProxy "D"
+Update-InternetSettings -EnableProxy "D"
 This command is used for disabling 'Proxy'.
 .Example
-Configure-InternetSettings -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.example.com"
+Update-InternetSettings -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.example.com"
 This command is used for enabling 'Bypass Proxy' and setting 'Bypass Local Addresses'.
 .Example
-Configure-InternetSettings -EnableBypassProxy "D"
+Update-InternetSettings -EnableBypassProxy "D"
 This command is used for disabling 'Bypass Proxy'.
 .Example
-Configure-InternetSettings -EnableAutomaticDetectSettings "E" -EnableAutomaticConfigScript "E" -SetAutomaticConfigurationURL "https://www.example.com" -EnableProxy "E" -SetProxyServer "http://proxyURL:8080" -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.URL1.com;www.URL2.com"
+Update-InternetSettings -EnableAutomaticDetectSettings "E" -EnableAutomaticConfigScript "E" -SetAutomaticConfigurationURL "https://www.example.com" -EnableProxy "E" -SetProxyServer "http://proxyURL:8080" -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.URL1.com;www.URL2.com"
 This command is used for enabling the entire Internet Settings.
 .Example
-Configure-InternetSettings -EnableAutomaticDetectSettings "D" -EnableAutomaticConfigScript "D" -EnableProxy "D" -EnableBypassProxy "D"
+Update-InternetSettings -EnableAutomaticDetectSettings "D" -EnableAutomaticConfigScript "D" -EnableProxy "D" -EnableBypassProxy "D"
 This command is used for disabling the entire Internet Settings.
 
 #>
 
-Function Configure-InternetSettings
+Function Update-InternetSettings
 {
     [CmdletBinding()]
     Param(
@@ -121,7 +121,7 @@ Function Configure-InternetSettings
             if($EnableAutomaticDetectSettings -eq "E" -or $EnableAutomaticDetectSettings -eq "D" -or $EnableAutomaticConfigScript -eq "E" -or $EnableAutomaticConfigScript -eq "D" -or $EnableProxy -eq "E" -or $EnableProxy -eq "D" -or $EnableBypassProxy -eq "E" -or $EnableBypassProxy -eq "D")
             {
                 $IEProcess = Get-Process | Where-Object -Property Name -EQ "iexplore"
-                if($IEProcess -ne $null)
+                if($null -ne $IEProcess)
                 {
                     Get-Process iexplore | Stop-Process
                     Write-Log("'Internet Explorer' process found running and stopped on Machine :: '$env:COMPUTERNAME'.")
@@ -264,4 +264,4 @@ Function Configure-InternetSettings
     }
 }
 
-<# Configure-InternetSettings -EnableAutomaticDetectSettings "E" -EnableAutomaticConfigScript "E" -EnableProxy "E" -SetProxyServer "http://proxy.internal.poxy.com.au:8080" -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.google.com;www.yahoo.com" #>
+<# Update-InternetSettings -EnableAutomaticDetectSettings "E" -EnableAutomaticConfigScript "E" -SetAutomaticConfigurationURL "//configuration.pac" -EnableProxy "E" -SetProxyServer "http://proxy.internal.poxy.com.au:8080" -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.google.com;www.yahoo.com" #>
