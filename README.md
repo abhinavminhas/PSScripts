@@ -35,7 +35,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    This function gets the matching string values from the supplied files.  
    <ins>**Usage Example:**</ins> 
    ```
-   Get-MatchedStringFromFiles -FileFolderPath "C:\Users\abhinavminhas\Files" -FileIncludeFilter "*.trx" -FileExcludeFilter "*.txt" -Regex ":::::::: Application ID: \[[0-9]{0,9}\]\; Student ID: \[[0-9]{0,9}\] ::::::::"
+   Get-MatchedStringFromFiles -FileFolderPath "C:\Files" -FileIncludeFilter "*.trx" -FileExcludeFilter "*.txt" -Regex ":::::::: Application ID: \[[0-9]{0,9}\]\; Student ID: \[[0-9]{0,9}\] ::::::::"
    ```
    **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
    ```
