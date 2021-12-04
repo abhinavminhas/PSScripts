@@ -51,11 +51,10 @@ Function Get-CodedUIHTMLLogger
             Write-Output "[[ $logMessage ]]"
             write-output $("-" * ($print))
         }
-        if($Zipped) { $Zipped =$true }
+        if ($Zipped) { $Zipped = $true }
         else { $Zipped = $false }
-        $loggerFileDirectoryName = "HTMLLoggerReports"
-        if($ZippedFileName -ne "") { $ZippedFileName =$ZippedFileName }
-        else { $ZippedFileName = "HTMLLoggerReports" }
+        if ($ZippedFileName -ne "") { $ZippedFileName = $ZippedFileName; $loggerFileDirectoryName = $ZippedFileName; }
+        else { $ZippedFileName = "HTMLLoggerReports"; $loggerFileDirectoryName = "HTMLLoggerReports"; }
     }
     
     Process
@@ -63,12 +62,12 @@ Function Get-CodedUIHTMLLogger
         try
         {
             $path = $TestResultsPath
-            $newpath = Join-Path $path $loggerFileDirectoryName
-            $pathExists = Test-Path $newpath
+            $pathExists = Test-Path $path
             if ($pathExists -eq $false)
             {
-                throw [System.IO.FileNotFoundException]::new("Path '" + $newpath + "' Not Found.")
+                throw [System.IO.FileNotFoundException]::new("Path '" + $path + "' Not Found.")
             }
+            $newpath = Join-Path $path $loggerFileDirectoryName
             $htmlLoggerFiles = Get-ChildItem -Path $path -Exclude *.trx.html -Filter *.html -Recurse -ErrorAction SilentlyContinue -Force
             New-Item -Path $path -ItemType Directory -Name $loggerFileDirectoryName -Force
             foreach ($htmlLoggerFile in $htmlLoggerFiles)
@@ -79,7 +78,7 @@ Function Get-CodedUIHTMLLogger
                     Copy-Item -LiteralPath $htmlLoggerFile -Destination $newpath
                 }
             }
-            if($zipped -eq $true)
+            if($Zipped -eq $true)
             {
                 if((Get-ChildItem $path $loggerFileDirectoryName -Recurse -Directory -Name) -eq  $loggerFileDirectoryName)
                 {
@@ -100,11 +99,11 @@ Function Get-CodedUIHTMLLogger
             Break
         }
     }
-   
+
     End
     {
         Write-Log(":::: HTML Logger Files Collated Into '$loggerFileDirectoryName' Folder. ::::")
     }
 }
 
-<# Get-CodedUIHTMLLogger -TestResultsPath C:\Test\TestResults #>
+<# Get-CodedUIHTMLLogger -TestResultsPath C:\Test\TestResults -Zipped -ZippedFileName TestReports #>
