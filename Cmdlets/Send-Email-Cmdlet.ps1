@@ -193,5 +193,5 @@ Function Send-Email
     }
 }
 
-#Send-Email -SMTPServer "<SMTP Server Address>" -SMTPPort "<SMTP Server Port>" -From "<From Address>" -Password "<Password>" -To "<To Addresses>" -Subject "<Subject Line>"
-#Send-Email -SMTPServer "<SMTP Server Address>" -SMTPPort "<SMTP Server Port>" -From "<From Address>" -Password "<Password>" -To "<To Addresses>" -Cc "<Cc Addresses>" -Bcc "<Bcc Addresses>" -Subject "<Subject Line>" -Body "<Email Body>" -AttachmentFolderPath "<Attachment Folder Path>" -AttachmentIncludeFilter "<Include Filter>" -AttachmentExcludeFilter "<Exclude Filter>"
+<# Send-Email -SMTPServer "<SMTP Server Address>" -SMTPPort "<SMTP Server Port>" -From "<From Address>" -Password "<Password>" -To "<To Addresses>" -Subject "<Subject Line>" #>
+<# Send-Email -SMTPServer "<SMTP Server Address>" -SMTPPort "<SMTP Server Port>" -From "<From Address>" -Password "<Password>" -To "<To Addresses>" -Cc "<Cc Addresses>" -Bcc "<Bcc Addresses>" -Subject "<Subject Line>" -Body "<Email Body>" -AttachmentFolderPath "<Attachment Folder Path>" -AttachmentIncludeFilter "<Include Filter>" -AttachmentExcludeFilter "<Exclude Filter>" #>

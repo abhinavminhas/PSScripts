@@ -6,21 +6,9 @@
 # **Cmdlets**
 A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/cmdlet-overview) is a lightweight command that is used in the PowerShell environment. The PowerShell runtime invokes these cmdlets within the context of automation scripts that are provided at the command line.  
 
--  [Update-InternetSettings](./Cmdlets/Update-InternetSettings-Cmdlet.ps1)  
-   <ins>**Description:**</ins>  
-   The function can manipulate internet settings provided as input to the cmdlet. Requires Internet Explorer to enforce changes.  
-   <ins>**Usage Example:**</ins> 
-   ```
-   Update-InternetSettings -EnableAutomaticDetectSettings "E" -EnableAutomaticConfigScript "E" -SetAutomaticConfigurationURL "//configuration.pac" -EnableProxy "E" -SetProxyServer "http://proxy.internal.poxy.com.au:8080" -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.google.com;www.yahoo.com"
-   ```
-   **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
-   ```
-   Get-Help Update-InternetSettings -Full
-   ```
-
 -  [Get-CodedUIHTMLLogger](./Cmdlets/Get-CodedUIHTMLLogger-Cmdlet.ps1)  
    <ins>**Description:**</ins>  
-   This function gets the generated Coded UI HTML logger report files from the 'Test Results' folder.  
+   The function gets the generated Coded UI HTML logger report files from the 'Test Results' folder.  
    <ins>**Usage Example:**</ins> 
    ```
    Get-CodedUIHTMLLogger -TestResultsPath "C:\Test\TestResults" -Zipped -ZippedFileName "TestReports"
@@ -32,7 +20,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
 
 -  [Get-MatchedStringFromFiles](./Cmdlets/Get-MatchedStringFromFiles-Cmdlet.ps1)  
    <ins>**Description:**</ins>  
-   This function gets the matching string values from the supplied files.  
+   The function gets the matching string values from the supplied files.  
    <ins>**Usage Example:**</ins> 
    ```
    Get-MatchedStringFromFiles -FileFolderPath "C:\Files" -FileIncludeFilter "*.trx" -FileExcludeFilter "*.txt" -Regex ":::::::: Application ID: \[[0-9]{0,9}\]\; Student ID: \[[0-9]{0,9}\] ::::::::"
@@ -40,6 +28,42 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
    ```
    Get-Help Get-MatchedStringFromFiles -Full
+   ```
+
+-  [Restart-Servers](./Cmdlets/Restart-Servers-Cmdlet.ps1)  
+   <ins>**Description:**</ins>  
+   The function restarts the machines/servers provided as input to the cmdlet.  
+   <ins>**Usage Example:**</ins> 
+   ```
+   Restart-Servers -Servers "PC1,PC2,PC3,PC4" -Username "domain\<username>" -Password "<password>" -WaitForServerToRestart "60" -PingRetries "4"
+   ```
+   **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
+   ```
+   Get-Help Restart-Servers -Full
+   ```
+
+-  [Send-Email](./Cmdlets/Send-Email-Cmdlet.ps1)  
+   <ins>**Description:**</ins>  
+   The function sends email using SMTP Client.  
+   <ins>**Usage Example:**</ins> 
+   ```
+   Send-Email -SMTPServer "<SMTP Server Address>" -SMTPPort "<SMTP Server Port>" -From "<From Address>" -Password "<Password>" -To "<To Addresses>" -Cc "<Cc Addresses>" -Bcc "<Bcc Addresses>" -Subject "<Subject Line>" -Body "<Email Body>" -AttachmentFolderPath "<Attachment Folder Path>" -AttachmentIncludeFilter "<Include Filter>" -AttachmentExcludeFilter "<Exclude Filter>"
+   ```
+   **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
+   ```
+   Get-Help Send-Email -Full
+   ```
+
+-  [Update-InternetSettings](./Cmdlets/Update-InternetSettings-Cmdlet.ps1)  
+   <ins>**Description:**</ins>  
+   The function can manipulate internet settings provided as input to the cmdlet. Requires Internet Explorer to enforce changes.  
+   <ins>**Usage Example:**</ins> 
+   ```
+   Update-InternetSettings -EnableAutomaticDetectSettings "E" -EnableAutomaticConfigScript "E" -SetAutomaticConfigurationURL "//configuration.pac" -EnableProxy "E" -SetProxyServer "http://proxy.internal.poxy.com.au:8080" -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.google.com;www.yahoo.com"
+   ```
+   **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
+   ```
+   Get-Help Update-InternetSettings -Full
    ```
 
 # **Scripts**
