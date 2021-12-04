@@ -81,7 +81,7 @@ Function Get-MatchedStringFromFiles
             $requireFiles = New-Object System.Collections.ArrayList
             foreach ($file in $files)
             {
-                $filename = $file | select -Property Name
+                $filename = $file | Select-Object -Property Name
                 $filepath = Join-Path $path $filename.Name
                 if((Test-Path -Path $filepath -PathType leaf))
                 {
@@ -132,5 +132,5 @@ Function Get-MatchedStringFromFiles
     }
 }
 
-#Get-MatchedStringFromFiles -FileFolderPath "C:\Users\abhinavminhas\Downloads\Execution_Result" -Regex ":::::::: Application ID: \[[0-9]{0,9}\]\; Student ID: \[[0-9]{0,9}\] ::::::::"
-#Get-MatchedStringFromFiles -FileFolderPath "C:\Users\abhinavminhas\Downloads\Execution_Result" -FileIncludeFilter "*.trx" -FileExcludeFilter "*.txt" -Regex ":::::::: Application ID: \[[0-9]{0,9}\]\; Student ID: \[[0-9]{0,9}\] ::::::::"
+<# Get-MatchedStringFromFiles -FileFolderPath "C:\Files" -Regex ":::::::: Application ID: \[[0-9]{0,9}\]\; Student ID: \[[0-9]{0,9}\] ::::::::" #>
+<# Get-MatchedStringFromFiles -FileFolderPath "C:\Files" -FileIncludeFilter "*.trx" -FileExcludeFilter "*.txt" -Regex ":::::::: Application ID: \[[0-9]{0,9}\]\; Student ID: \[[0-9]{0,9}\] ::::::::" #>
