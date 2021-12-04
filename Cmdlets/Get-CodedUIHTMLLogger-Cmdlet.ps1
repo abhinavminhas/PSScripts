@@ -51,49 +51,59 @@ Function Get-CodedUIHTMLLogger
             Write-Output "[[ $logMessage ]]"
             write-output $("-" * ($print))
         }
-        if($Zipped) { $Zipped =$true }
+        if ($Zipped) { $Zipped = $true }
         else { $Zipped = $false }
-        $loggerFileDirectoryName = "HTMLLoggerReports"
-        if($ZippedFileName -ne "") { $ZippedFileName =$ZippedFileName }
-        else { $ZippedFileName = "HTMLLoggerReports" }
+        if ($ZippedFileName -ne "") { $ZippedFileName = $ZippedFileName; $loggerFileDirectoryName = $ZippedFileName; }
+        else { $ZippedFileName = "HTMLLoggerReports"; $loggerFileDirectoryName = "HTMLLoggerReports"; }
     }
     
     Process
     {
         try
         {
-            $path = $TestResultsPath            
+            $path = $TestResultsPath
+            $pathExists = Test-Path $path
+            if ($pathExists -eq $false)
+            {
+                throw [System.IO.FileNotFoundException]::new("Path '" + $path + "' Not Found.")
+            }
             $newpath = Join-Path $path $loggerFileDirectoryName
             $htmlLoggerFiles = Get-ChildItem -Path $path -Exclude *.trx.html -Filter *.html -Recurse -ErrorAction SilentlyContinue -Force
             New-Item -Path $path -ItemType Directory -Name $loggerFileDirectoryName -Force
             foreach ($htmlLoggerFile in $htmlLoggerFiles)
             {
-                $filename = $htmlLoggerFile | select -Property Name
+                $filename = $htmlLoggerFile | Select-Object -Property Name
                 if(!(Test-Path(Join-Path $newpath $filename.Name)))
                 {
                     Copy-Item -LiteralPath $htmlLoggerFile -Destination $newpath
                 }
             }
-            if($zipped -eq $true)
+            if($Zipped -eq $true)
             {
-                if((ls $path $loggerFileDirectoryName -Recurse -Directory -Name) -eq  $loggerFileDirectoryName)
+                if((Get-ChildItem $path $loggerFileDirectoryName -Recurse -Directory -Name) -eq  $loggerFileDirectoryName)
                 {
                     Compress-Archive -LiteralPath $newpath -DestinationPath $path\$ZippedFileName -Force
                 }
             }
+        }
+        catch [System.IO.FileNotFoundException]
+        {
+            Write-Log(":: SCRIPT ERROR ::")
+            Write-Log("Error Message :: $_")
+            Break
         }
         catch
         {
             Write-Log(":: SCRIPT ERROR ::")
             Write-Log("Error Message :: $_.Exception.Message")
             Break
-        }    
-    } 
-   
+        }
+    }
+
     End
     {
         Write-Log(":::: HTML Logger Files Collated Into '$loggerFileDirectoryName' Folder. ::::")
     }
 }
 
-<# Get-CodedUIHTMLLogger -TestResultsPath C:\Test\TestResults #>
+<# Get-CodedUIHTMLLogger -TestResultsPath C:\Test\TestResults -Zipped -ZippedFileName TestReports #>
