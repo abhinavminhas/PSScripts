@@ -6,18 +6,6 @@
 # **Cmdlets**
 A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/cmdlet-overview) is a lightweight command that is used in the PowerShell environment. The PowerShell runtime invokes these cmdlets within the context of automation scripts that are provided at the command line.  
 
--  [Update-InternetSettings](./Cmdlets/Update-InternetSettings-Cmdlet.ps1)  
-   <ins>**Description:**</ins>  
-   The function can manipulate internet settings provided as input to the cmdlet. Requires Internet Explorer to enforce changes.  
-   <ins>**Usage Example:**</ins> 
-   ```
-   Update-InternetSettings -EnableAutomaticDetectSettings "E" -EnableAutomaticConfigScript "E" -SetAutomaticConfigurationURL "//configuration.pac" -EnableProxy "E" -SetProxyServer "http://proxy.internal.poxy.com.au:8080" -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.google.com;www.yahoo.com"
-   ```
-   **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
-   ```
-   Get-Help Update-InternetSettings -Full
-   ```
-
 -  [Get-CodedUIHTMLLogger](./Cmdlets/Get-CodedUIHTMLLogger-Cmdlet.ps1)  
    <ins>**Description:**</ins>  
    The function gets the generated Coded UI HTML logger report files from the 'Test Results' folder.  
@@ -64,6 +52,18 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
    ```
    Get-Help Send-Email -Full
+   ```
+
+-  [Update-InternetSettings](./Cmdlets/Update-InternetSettings-Cmdlet.ps1)  
+   <ins>**Description:**</ins>  
+   The function can manipulate internet settings provided as input to the cmdlet. Requires Internet Explorer to enforce changes.  
+   <ins>**Usage Example:**</ins> 
+   ```
+   Update-InternetSettings -EnableAutomaticDetectSettings "E" -EnableAutomaticConfigScript "E" -SetAutomaticConfigurationURL "//configuration.pac" -EnableProxy "E" -SetProxyServer "http://proxy.internal.poxy.com.au:8080" -EnableBypassProxy "E" -SetBypassLocalAddresses "<local>;www.google.com;www.yahoo.com"
+   ```
+   **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
+   ```
+   Get-Help Update-InternetSettings -Full
    ```
 
 # **Scripts**
