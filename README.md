@@ -20,7 +20,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
 
 -  [Get-CodedUIHTMLLogger](./Cmdlets/Get-CodedUIHTMLLogger-Cmdlet.ps1)  
    <ins>**Description:**</ins>  
-   This function gets the generated Coded UI HTML logger report files from the 'Test Results' folder.  
+   The function gets the generated Coded UI HTML logger report files from the 'Test Results' folder.  
    <ins>**Usage Example:**</ins> 
    ```
    Get-CodedUIHTMLLogger -TestResultsPath "C:\Test\TestResults" -Zipped -ZippedFileName "TestReports"
@@ -32,7 +32,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
 
 -  [Get-MatchedStringFromFiles](./Cmdlets/Get-MatchedStringFromFiles-Cmdlet.ps1)  
    <ins>**Description:**</ins>  
-   This function gets the matching string values from the supplied files.  
+   The function gets the matching string values from the supplied files.  
    <ins>**Usage Example:**</ins> 
    ```
    Get-MatchedStringFromFiles -FileFolderPath "C:\Files" -FileIncludeFilter "*.trx" -FileExcludeFilter "*.txt" -Regex ":::::::: Application ID: \[[0-9]{0,9}\]\; Student ID: \[[0-9]{0,9}\] ::::::::"
@@ -40,6 +40,18 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
    ```
    Get-Help Get-MatchedStringFromFiles -Full
+   ```
+
+-  [Restart-Servers](./Cmdlets/Restart-Servers-Cmdlet.ps1)  
+   <ins>**Description:**</ins>  
+   The function restarts the machines/servers provided as input to the cmdlet.
+   <ins>**Usage Example:**</ins> 
+   ```
+   Restart-Servers -Servers "PC1,PC2,PC3,PC4" -Username "domain\<username>" -Password "<password>" -WaitForServerToRestart "60" -PingRetries "4"
+   ```
+   **NOTE:** *Run cmdlet function file in PowerShell ISE and use below command for more help documentation and examples.*  
+   ```
+   Get-Help Restart-Servers -Full
    ```
 
 # **Scripts**
