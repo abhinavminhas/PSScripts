@@ -126,7 +126,7 @@ Function Send-Email
             $attachments = New-Object System.Collections.ArrayList
             foreach ($attachmentFile in $attachmentFiles)
             {
-                $filename = $attachmentFile | select -Property Name
+                $filename = $attachmentFile | Select-Object -Property Name
                 $filepath = Join-Path $path $filename.Name
                 if((Test-Path -Path $filepath -PathType leaf))
                 {
