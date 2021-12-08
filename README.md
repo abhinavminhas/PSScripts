@@ -17,6 +17,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    ```
    Get-Help Get-CodedUIHTMLLogger -Full
    ```
+   ________________________________________________________________________________________________________________________________________________
 
 -  **[Get-MatchedStringFromFiles](./Cmdlets/Get-MatchedStringFromFiles-Cmdlet.ps1)**  
    <ins>**Description:**</ins>  
@@ -29,6 +30,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    ```
    Get-Help Get-MatchedStringFromFiles -Full
    ```
+   ________________________________________________________________________________________________________________________________________________
 
 -  **[Restart-Servers](./Cmdlets/Restart-Servers-Cmdlet.ps1)**  
    <ins>**Description:**</ins>  
@@ -41,6 +43,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    ```
    Get-Help Restart-Servers -Full
    ```
+   ________________________________________________________________________________________________________________________________________________
 
 -  **[Send-Email](./Cmdlets/Send-Email-Cmdlet.ps1)**  
    <ins>**Description:**</ins>  
@@ -53,6 +56,7 @@ A PowerShell [cmdlet](https://docs.microsoft.com/en-us/powershell/scripting/deve
    ```
    Get-Help Send-Email -Full
    ```
+   ________________________________________________________________________________________________________________________________________________
 
 -  **[Update-InternetSettings](./Cmdlets/Update-InternetSettings-Cmdlet.ps1)**  
    <ins>**Description:**</ins>  
