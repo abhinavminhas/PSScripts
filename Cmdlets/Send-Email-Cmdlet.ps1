@@ -174,6 +174,7 @@ Function Send-Email
             }
             $smtp = New-Object System.Net.Mail.SmtpClient($SMTPServer, $SMTPPort);
             $smtp.EnableSSL = $true
+            [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls -bor [System.Net.SecurityProtocolType]::Tls11 -bor [System.Net.SecurityProtocolType]::Tls12;
             $smtp.UseDefaultCredentials = $false;
             $smtp.DeliveryMethod = [Net.Mail.SmtpDeliveryMethod]::Network;
             $smtp.Credentials = New-Object System.Net.NetworkCredential($From, $Password);
